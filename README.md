@@ -1,5 +1,5 @@
-# Vocation Inspector App with Devise and Bootstrap
-Rails 7 with Devise 4.8.1 and Bootstrap 5
+# Vacation Inspector App with Devise and Bootstrap
+Rails 7 with Devise and Bootstrap 5
 
 
 ## Getting Started
@@ -9,10 +9,18 @@ Rails 7 with Devise 4.8.1 and Bootstrap 5
 - Rails 7
 
 ### Users
-Fields
+- Email
+- Password
+- Role
+
+### Statement Type
+- Name
 
 ### Statements
-Fields
+- Start date
+- End date
+- Status
+- Statement type
 
 ### Install
 
