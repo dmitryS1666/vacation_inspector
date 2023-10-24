@@ -1,0 +1,30 @@
+<div class='container'>
+  <div class='col-md-6 offset-md-3 mb-5'>
+    <div class='container'>
+      <h1>Create New Statement</h1>
+      <%= form_with model: @statement, url: statements_path, method: :post, local: true do |f| %>
+        <div class='mb-3'>
+          <label for='statement_type_field' class='form-label'>Type</label>
+          <%= f.select :statement_type_id,
+                       options_from_collection_for_select(@statement_types, 'id', 'name'),
+                       { prompt: 'Select a type' },
+                       class: 'form-select form-select-lg mb-3', required: true %>
+        </div>
+
+        <div class='mb-3'>
+          <label for='status_field' class='form-label'>Start date</label>
+          <%= f.date_field :start_date, class: 'form-control', required: true %>
+        </div>
+        <div class='mb-3'>
+          <label for='status_field' class='form-label'>End date</label>
+          <%= f.date_field :end_date, class: 'form-control', required: true %>
+        </div>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+
+      <%= link_to 'Statements', user_path(current_user),
+                  rel: 'noopener noreferrer',
+                  class: 'btn btn-outline-primary mt-2' %>
+    </div>
+  </div>
+</div>

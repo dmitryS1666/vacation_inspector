@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+<p>You got a new statement from <%= User.find(@statement.user_id).email %>!</p>
+<p>
+  Statement details<br>
+  --------------------------
+</p>
+<p>Type: <%= @statement.type %></p>
+<p>Start date: <%= @statement.start_date %></p>
+<p>End date: <%= @statement.end_date %></p>
+
+</body>
+</html>

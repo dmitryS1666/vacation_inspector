@@ -1,0 +1,59 @@
+<div class="container">
+  <% if @user.role != 'admin' %>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 mb-5">
+        <%= link_to 'New statement', new_statement_path,
+                    rel: 'noopener noreferrer',
+                    class: 'btn btn-outline-primary' %>
+      </div>
+      <% @user.statements.each do |st| %>
+        <div class="col-md-6 offset-md-3 mb-5 statement_card">
+          <div class="card text-center">
+            <h5 class="card-header">
+              Type: <%= st.type %>
+            </h5>
+            <div class="card-body">
+            <span class="status <%= "#{st.status.downcase}_status" %>">
+              <%= st.status.capitalize %>
+            </span>
+              <p class="card-text">From: <b><%= st.start_date %></b></p>
+              <p class="card-text">To: <b><%= st.end_date %></b></p>
+            </div>
+            <!-- TODO вынести отсюда статус -->
+            <% if st.status == 'pending' %>
+              <%= link_to 'Edit statement', edit_statement_path(st),
+                          class: 'btn btn-outline-primary' %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="row">
+      <% @all_statements.each do |st| %>
+        <div class="col-md-6 offset-md-3 mb-5 statement_card">
+          <div class="card text-center">
+            <h5 class="card-header">
+              Type: <%= st.type %>
+            </h5>
+            <h5 class="card-header">
+              User: <%= st.user.email %>
+            </h5>
+            <div class="card-body">
+            <span class="status <%= "#{st.status.downcase}_status" %>">
+              <%= st.status.capitalize %>
+            </span>
+              <p class="card-text">From: <b><%= st.start_date %></b></p>
+              <p class="card-text">To: <b><%= st.end_date %></b></p>
+            </div>
+            <!-- TODO вынести отсюда статус -->
+            <% if st.status == 'pending' %>
+              <%= link_to 'Edit statement', edit_statement_path(st),
+                          class: 'btn btn-outline-primary' %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,61 @@
+<div class='container'>
+  <div class='col-md-6 offset-md-3 mb-5'>
+    <h1>Edit Statement: "<%= @statement.type %>"</h1>
+
+    <!-- TODO необходимо отсюда вынести статусы -->
+    <% disable_status = @statement.status.match?('accept' || 'decline') ? true : false %>
+
+    <% if current_user.role != 'admin' %>
+      <div class='container'>
+        <%= form_with model: @statement, method: :patch, local: true do |f| %>
+          <div class='mb-3'>
+            <label for='status_field' class='form-label'>Status</label>
+            <%= f.text_field :status, class: 'form-control', disabled: true %>
+          </div>
+          <div class='mb-3'>
+            <label for='start_date_field' class='form-label'>Start Date</label>
+            <%= f.date_field :start_date, class: 'form-control', disabled: disable_status, required: true %>
+          </div>
+          <div class='mb-3'>
+            <label for='end_date_field' class='form-label'>End Sate</label>
+            <%= f.date_field :end_date, class: 'form-control', disabled: disable_status, required: true %>
+          </div>
+
+          <%= f.submit class: 'btn btn-primary', disabled: disable_status %>
+        <% end %>
+        <%= button_to "Destroy", @statement,
+                      method: :delete,
+                      class: 'btn btn-danger mt-2',
+                      data: { confirm: "Are you sure?" } %>
+
+        <%= link_to 'Statements', user_path(current_user),
+                    rel: 'noopener noreferrer',
+                    class: 'btn btn-outline-primary mt-2' %>
+      </div>
+    <% else %>
+      <div class='container'>
+        <%= form_with model: @statement, method: :patch, local: true do |f| %>
+          <div class='mb-3'>
+            <label for='status_field' class='form-label'>Status</label>
+            <%= f.select(:status, Statement::STATUSES.map { |value| [value, value] },
+                         class: 'form-select form-select-lg mb-3', required: true) %>
+          </div>
+          <div class='mb-3'>
+            <label for='start_date_field' class='form-label'>Start Date</label>
+            <%= f.date_field :start_date, class: 'form-control', disabled: true %>
+          </div>
+          <div class='mb-3'>
+            <label for='end_date_field' class='form-label'>End Sate</label>
+            <%= f.date_field :end_date, class: 'form-control', disabled: true %>
+          </div>
+
+          <%= f.submit class: 'btn btn-primary' %>
+        <% end %>
+
+        <%= link_to 'Statements', user_path(current_user),
+                    rel: 'noopener noreferrer',
+                    class: 'btn btn-outline-primary mt-2' %>
+      </div>
+    <% end %>
+  </div>
+</div>
