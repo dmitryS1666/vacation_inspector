@@ -16,6 +16,6 @@ production:
   encoding: unicode
   host: localhost
   pool: 5
-  database: inspector_production
-  username: inspector
+  database: application_production
+  username: application
   password: password
