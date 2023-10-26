@@ -31,3 +31,10 @@ rails db:migrate
 
 rails s
 ```
+
+### Info
+You can use the following login details:
+
+Roles:
+ - user - user@mail.com / 123456789
+ - admin - admin@mail.com / 123456789

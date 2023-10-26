@@ -6,23 +6,33 @@
 
     <div class="form-group mb-3 w-50">
       <%= f.label :email, class: "form-label" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control"  %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
     </div>
 
     <div class="form-group mb-3 w-50">
       <%= f.label :password, class: "form-label" %>
-      <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
     </div>
 
     <% if devise_mapping.rememberable? %>
       <div class="form-check mb-3 w-50">
-        <%= f.check_box :remember_me, class:"form-check-input" %>
-        <%= f.label :remember_me, class:"form-check-label" %>
+        <%= f.check_box :remember_me, class: "form-check-input" %>
+        <%= f.label :remember_me, class: "form-check-label" %>
       </div>
     <% end %>
 
     <div class="mb-3 d-flex align-items-center justify-content-center">
-      <%= f.submit "Log in", class:"btn btn-lg btn-primary rounded-pill" %>
+      <%= f.submit "Log in", class: "btn btn-lg btn-primary rounded-pill" %>
     </div>
   </div>
 <% end %>
+<div class="d-flex flex-column justify-content-center align-items-center pt-5">
+
+  <hr>
+  <h5>You can use the following login details:</h5>
+  <hr>
+  <h6>Role: user</h6>
+  <p>user@mail.com / 123456789</p>
+  <h6>Role: admin</h6>
+  <p>admin@mail.com / 123456789</p>
+</div>
